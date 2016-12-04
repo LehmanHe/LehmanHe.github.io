@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Cordova," />
 
 
 
@@ -84,12 +84,24 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="LehmanHe`blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Cordova plugin工程目录
+src: 各个平台的源码文件，包含 Android ios blackberry 等；www: JavaScript调用native代码的接口文件；plugin.xml: 插件的配置文件
+编写Android代码首先定义一个类继承自CordovaPlugin：1234public class Updater extends CordovaPlugin &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cordova plugin">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/Cordova-plugin/index.html">
 <meta property="og:site_name" content="LehmanHe`blog">
+<meta property="og:description" content="Cordova plugin工程目录
+src: 各个平台的源码文件，包含 Android ios blackberry 等；www: JavaScript调用native代码的接口文件；plugin.xml: 插件的配置文件
+编写Android代码首先定义一个类继承自CordovaPlugin：1234public class Updater extends CordovaPlugin &amp;#123">
+<meta property="og:image" content="http://yoursite.com/./屏幕快照 2016-11-30 下午4.03.22.png">
+<meta property="og:updated_time" content="2016-12-04T13:52:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LehmanHe`blog">
+<meta name="twitter:title" content="Cordova plugin">
+<meta name="twitter:description" content="Cordova plugin工程目录
+src: 各个平台的源码文件，包含 Android ios blackberry 等；www: JavaScript调用native代码的接口文件；plugin.xml: 插件的配置文件
+编写Android代码首先定义一个类继承自CordovaPlugin：1234public class Updater extends CordovaPlugin &amp;#123">
+<meta name="twitter:image" content="http://yoursite.com/./屏幕快照 2016-11-30 下午4.03.22.png">
 
 
 
@@ -107,7 +119,7 @@
   };
 </script>
 
-  <title> LehmanHe`blog </title>
+  <title> Cordova plugin | LehmanHe`blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -128,9 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +227,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -239,10 +249,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/04/Cordova-plugin/" itemprop="url">
-                  Cordova plugin
-                </a>
+                Cordova plugin
               
             
           </h1>
@@ -289,9 +296,7 @@
       
 
       
-        
-          
-            <h1 id="Cordova-plugin"><a href="#Cordova-plugin" class="headerlink" title="Cordova plugin"></a>Cordova plugin</h1><h2 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h2><p><img src="./屏幕快照 2016-11-30 下午4.03.22.png" alt="Alt text"></p>
+        <h1 id="Cordova-plugin"><a href="#Cordova-plugin" class="headerlink" title="Cordova plugin"></a>Cordova plugin</h1><h2 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h2><p><img src="./屏幕快照 2016-11-30 下午4.03.22.png" alt="Alt text"></p>
 <p><code>src</code>: 各个平台的源码文件，包含 <code>Android</code> <code>ios</code> <code>blackberry</code> 等；<br><code>www</code>: JavaScript调用native代码的接口文件；<br><code>plugin.xml</code>: 插件的配置文件</p>
 <h2 id="编写Android代码"><a href="#编写Android代码" class="headerlink" title="编写Android代码"></a>编写Android代码</h2><h4 id="首先定义一个类继承自CordovaPlugin："><a href="#首先定义一个类继承自CordovaPlugin：" class="headerlink" title="首先定义一个类继承自CordovaPlugin："></a>首先定义一个类继承自<code>CordovaPlugin</code>：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Updater</span> <span class="keyword">extends</span> <span class="title">CordovaPlugin</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Updater</span><span class="params">()</span></span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="在该类中添加一个方法execute"><a href="#在该类中添加一个方法execute" class="headerlink" title="在该类中添加一个方法execute:"></a>在该类中添加一个方法<code>execute</code>:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Updater</span> <span class="keyword">extends</span> <span class="title">CordovaPlugin</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Updater</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String action, JSONArray args, <span class="keyword">final</span> CallbackContext callbackContext)</span> <span class="keyword">throws</span> JSONException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (action.equals(<span class="string">"update"</span>)) &#123;</div><div class="line">            <span class="keyword">new</span> UpdaterTask(callbackContext).execute(args.getString(<span class="number">0</span>));</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -316,252 +321,58 @@
 <h5 id="实现interface-updater-js"><a href="#实现interface-updater-js" class="headerlink" title="实现interface[updater.js]"></a>实现interface[updater.js]</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">var</span> ExpenseUpdater = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ExpenseUpdater</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line">    ExpenseUpdater.prototype.update=<span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">            expenseupdater.update(url,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</div><div class="line">                resolve(msg);</div><div class="line">            &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">                reject(<span class="string">"fuck"</span>);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> ExpenseUpdater;</div><div class="line">&#125;());</div><div class="line"></div><div class="line">exports.ExpenseUpdater = ExpenseUpdater;</div></pre></td></tr></table></figure>
 <p>注意：其中<code>expenseupdater</code>对应pluign.xml文件中的<code>js-module</code>标签中的<code>clobbers.target</code></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/23/test/" itemprop="url">
-                  ListView复用机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-23T20:12:06+08:00" content="2016-05-23">
-              2016-05-23
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/23/test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/test/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Cordova/" rel="tag">#Cordova</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>convertView什么时候是NULL？<br>今天在stackoverflow上看到大神回答的，翻译过来加深印象。第一次翻译，错了别光打脸。<br><a href="https://stackoverflow.com/questions/11945563/how-listviews-recycling-mechanism-works/14108676#14108676?newreg=774a8684c47b4c128feb82c4f70b24a9" target="_blank" rel="external">我是传送门</a><br>刚开始的我也没有搞懂listview中的复用机制，但是经过几天的琢磨看到了下面的图片后终于有了眉目。图片来自android.amberfog<br><img src="http://i.stack.imgur.com/VLG9g.jpg" alt="这里写图片描述"></p>
-<p>当你的listview适配了一个含很多数据的adapter，并且显示在屏幕上的时候，即使在你上下滑动listview的时候，它的行数并没有增加，这正是listview快速有效的原因所在。如上图所示，刚开始有7个可见的item，当你向上滑动listview时，item1变得不可见了，此时item1就被放入了recycler中，你可以在代码中加入下列代码来证实：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(&quot;getview:&quot;+position+&quot; &quot;+convertView);</div></pre></td></tr></table></figure>
-<p>假如你的getview()代码是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public View getView(final int position, View convertView, ViewGroup parent)</div><div class="line">&#123;</div><div class="line">    System.out.println(&quot;getview:&quot;+position+&quot; &quot;+convertView);</div><div class="line">    View row=convertView;</div><div class="line">    if(row==null)</div><div class="line">    &#123;</div><div class="line">        LayoutInflater inflater=((Activity)context).getLayoutInflater();</div><div class="line">        row=inflater.inflate(layoutResourceId, parent,false);</div><div class="line"></div><div class="line">        holder=new PakistaniDrama();</div><div class="line">        holder.tvDramaName=(TextView)row.findViewById(R.id.dramaName);</div><div class="line">        holder.cbCheck=(CheckBox)row.findViewById(R.id.checkBox);</div><div class="line"></div><div class="line">        row.setTag(holder);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        holder=(PakistaniDrama)row.getTag();</div><div class="line">    &#125;</div><div class="line">            holder.tvDramaName.setText(dramaList.get(position).getDramaName());</div><div class="line">    holder.cbCheck.setChecked(checks.get(position));</div><div class="line">            return row;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>观察你的logcat你会发现，刚开始显示那7个item的时候convertview都是NULL，这是因为刚开始的时侯Recycler 中没有可以复用的view（item），所以getview（）就为每一个item创建一个新的view。但是当你把item1向上划到屏幕外不可见时，item1就被放入了Recycler 。之后你再滑动产生新的item时就不再重新创建view了，而是复用Recycler 中的view（item）。如果你的position0的地方（即item1中放置了一个checkbox，并且已经选中了，你会发现item8中的checkbox也是选中的）。</p>
-<p>另外：<br>1.永远不要把listview的layout_height 和layout_width设置为wrap_content 。因为getview（）会强制adapter去获取子view的高度（用作listview显示的参数），而且有时候会产生一些意想不到的结果，例如你没有滑动listview却返回了convertview。所以建议使用match_parent或固定值。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/23/test/" rel="next" title="ListView复用机制">
+                <i class="fa fa-chevron-left"></i> ListView复用机制
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/05/23/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-23T19:35:34+08:00" content="2016-05-23">
-              2016-05-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/23/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -569,6 +380,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/04/Cordova-plugin/"
+           data-title="Cordova plugin" data-url="http://yoursite.com/2016/12/04/Cordova-plugin/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -588,8 +407,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -632,6 +460,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cordova-plugin"><span class="nav-number">1.</span> <span class="nav-text">Cordova plugin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工程目录"><span class="nav-number">1.1.</span> <span class="nav-text">工程目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写Android代码"><span class="nav-number">1.2.</span> <span class="nav-text">编写Android代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先定义一个类继承自CordovaPlugin："><span class="nav-number">1.2.0.1.</span> <span class="nav-text">首先定义一个类继承自CordovaPlugin：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在该类中添加一个方法execute"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">在该类中添加一个方法execute:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写plugin-xml文件"><span class="nav-number">1.3.</span> <span class="nav-text">编写plugin.xml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写接口文件"><span class="nav-number">1.4.</span> <span class="nav-text">编写接口文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Ionic2中如何使用"><span class="nav-number">1.5.</span> <span class="nav-text">在Ionic2中如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先将该plugin安装到ionic工程中："><span class="nav-number">1.5.0.0.1.</span> <span class="nav-text">首先将该plugin安装到ionic工程中：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编写一个调用的interface-updater-d-ts"><span class="nav-number">1.5.0.0.2.</span> <span class="nav-text">编写一个调用的interface[updater.d.ts]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现interface-updater-js"><span class="nav-number">1.5.0.0.3.</span> <span class="nav-text">实现interface[updater.js]</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -735,6 +574,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
