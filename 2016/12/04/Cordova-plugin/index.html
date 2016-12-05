@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Lehman&#39;s Blog" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Cordova plugin｜Lehman的博客 | Lehman&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="lehman.top/2016/12/04/Cordova-plugin/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('img/home-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lehman&#39;s Blog
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Cordova plugin</h1>
+                    
+                    <span class="meta">
+                         作者 Lehman He
+                        <span>
+                          日期 2016-12-04
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Cordova"
+                           title="Cordova">Cordova</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Cordova plugin
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="Cordova-plugin"><a href="#Cordova-plugin" class="headerlink" title="Cordova plugin"></a>Cordova plugin</h1><h2 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h2><p><img src="http://p1.bpimg.com/567571/054dfd2aae303dfe.png" alt="Alt text"></p>
+<p><code>src</code>: 各个平台的源码文件，包含 <code>Android</code> <code>ios</code> <code>blackberry</code> 等；<br><code>www</code>: JavaScript调用native代码的接口文件；<br><code>plugin.xml</code>: 插件的配置文件</p>
+<h2 id="编写Android代码"><a href="#编写Android代码" class="headerlink" title="编写Android代码"></a>编写Android代码</h2><h4 id="首先定义一个类继承自CordovaPlugin："><a href="#首先定义一个类继承自CordovaPlugin：" class="headerlink" title="首先定义一个类继承自CordovaPlugin："></a>首先定义一个类继承自<code>CordovaPlugin</code>：</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Updater</span> <span class="keyword">extends</span> <span class="title">CordovaPlugin</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Updater</span><span class="params">()</span></span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="在该类中添加一个方法execute"><a href="#在该类中添加一个方法execute" class="headerlink" title="在该类中添加一个方法execute:"></a>在该类中添加一个方法<code>execute</code>:</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Updater</span> <span class="keyword">extends</span> <span class="title">CordovaPlugin</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Updater</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">execute</span><span class="params">(String action, JSONArray args, <span class="keyword">final</span> CallbackContext callbackContext)</span> <span class="keyword">throws</span> JSONException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (action.equals(<span class="string">"update"</span>)) &#123;</div><div class="line">            <span class="keyword">new</span> UpdaterTask(callbackContext).execute(args.getString(<span class="number">0</span>));</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>action</code>:在JavaScript中调用时指定的action名称；<br><code>args</code>：在JavaScript中调用时传入的参数；<br><code>callbackContext</code>：向JavaScript返回结果的上下文对象，正确返回时<code>callbackContext.success(data)</code>,错误返回时 <code>callbackContext.error(err)</code></p>
+<p>注意：cordova plugin中的上下文与Android native中的上下文有所区别，例如在cordova中启动一个Activity的写法是：cordova.getActivity().startActivity(Intent intent)，且cordova plugin中的Activity需要继承自<code>CordovaActivity</code>.</p>
+<h2 id="编写plugin-xml文件"><a href="#编写plugin-xml文件" class="headerlink" title="编写plugin.xml文件"></a>编写plugin.xml文件</h2><p>首先看一个例子：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version='1.0' encoding='utf-8'?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">plugin</span> <span class="attr">id</span>=<span class="string">"expense-plugin-updater"</span> <span class="attr">version</span>=<span class="string">"0.0.1"</span> <span class="attr">xmlns</span>=<span class="string">"http://apache.org/cordova/ns/plugins/1.0"</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>ExpenseUpdater<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">js-module</span> <span class="attr">name</span>=<span class="string">"ExpenseUpdater"</span> <span class="attr">src</span>=<span class="string">"www/expense-plugin-updater.js"</span>&gt;</span><span class="tag">&lt;<span class="name">clobbers</span> <span class="attr">target</span>=<span class="string">"expenseupdater"</span>/&gt;</span><span class="tag">&lt;/<span class="name">js-module</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">platform</span> <span class="attr">name</span>=<span class="string">"android"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">config-file</span> <span class="attr">parent</span>=<span class="string">"/*"</span> <span class="attr">target</span>=<span class="string">"res/xml/config.xml"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">feature</span> <span class="attr">name</span>=<span class="string">"ExpenseUpdater"</span>&gt;</span><span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"android-package"</span> <span class="attr">value</span>=<span class="string">"expense.plugin.updater.Updater"</span>/&gt;</span><span class="tag">&lt;/<span class="name">feature</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">config-file</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">config-file</span> <span class="attr">parent</span>=<span class="string">"/*"</span> <span class="attr">target</span>=<span class="string">"AndroidManifest.xml"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">config-file</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source-file</span> <span class="attr">src</span>=<span class="string">"src/android/Updater.java"</span> <span class="attr">target-dir</span>=<span class="string">"src/expense/plugin/updater"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source-file</span> <span class="attr">src</span>=<span class="string">"src/android/UpdaterTask.java"</span> <span class="attr">target-dir</span>=<span class="string">"src/expense/plugin/updater"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">source-file</span> <span class="attr">src</span>=<span class="string">"src/android/DecompressFast.java"</span> <span class="attr">target-dir</span>=<span class="string">"src/expense/plugin/updater"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">platform</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>js-module: <code>name</code>:接口文件的名字 <code>src</code>：接口文件的路径 <code>clobbers.target</code>：在宿主工程中该plugin的对象名称；</li>
+<li>feature：每一个调用入口都需要在这里注册，即：<code>extends CordovaPlugin</code>的类</li>
+<li>source-file：源码文件的map关系<br>plugin.xml详细的教程见：<a href="https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html" target="_blank" rel="external">https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html</a></li>
+</ul>
+<h2 id="编写接口文件"><a href="#编写接口文件" class="headerlink" title="编写接口文件"></a>编写接口文件</h2><p>例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'cordova/exec'</span>);</div><div class="line"></div><div class="line">exports.update = <span class="function"><span class="keyword">function</span>(<span class="params">url, success, error</span>) </span>&#123;</div><div class="line">    exec(success, error, <span class="string">"ExpenseUpdater"</span>, <span class="string">"update"</span>, [url]);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>success: 正确回调</li>
+<li>error：错误回调</li>
+<li>ExpenseUpdater：需要调用的<code>feature</code>的名称</li>
+<li>update：需要调用的<code>action</code>的名称</li>
+<li>[url]:传入的参数数组</li>
+</ul>
+<h2 id="在Ionic2中如何使用"><a href="#在Ionic2中如何使用" class="headerlink" title="在Ionic2中如何使用"></a>在Ionic2中如何使用</h2><h5 id="首先将该plugin安装到ionic工程中："><a href="#首先将该plugin安装到ionic工程中：" class="headerlink" title="首先将该plugin安装到ionic工程中："></a>首先将该plugin安装到ionic工程中：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">cordova plugin add [path-to-your-plugin]</div></pre></td></tr></table></figure>
+<h5 id="编写一个调用的interface-updater-d-ts"><a href="#编写一个调用的interface-updater-d-ts" class="headerlink" title="编写一个调用的interface[updater.d.ts]"></a>编写一个调用的interface[updater.d.ts]</h5><figure class="highlight typescript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">declare</span> <span class="keyword">class</span> ExpenseUpdater &#123;</div><div class="line">    update(url: <span class="built_in">string</span>): Promise&lt;<span class="built_in">any</span>&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="实现interface-updater-js"><a href="#实现interface-updater-js" class="headerlink" title="实现interface[updater.js]"></a>实现interface[updater.js]</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">var</span> ExpenseUpdater = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ExpenseUpdater</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line">    ExpenseUpdater.prototype.update=<span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">            expenseupdater.update(url,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</div><div class="line">                resolve(msg);</div><div class="line">            &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">                reject(<span class="string">"fuck"</span>);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> ExpenseUpdater;</div><div class="line">&#125;());</div><div class="line"></div><div class="line">exports.ExpenseUpdater = ExpenseUpdater;</div></pre></td></tr></table></figure>
+<p>注意：其中<code>expenseupdater</code>对应pluign.xml文件中的<code>js-module</code>标签中的<code>clobbers.target</code></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/05/23/test/" data-toggle="tooltip" data-placement="top"
+                           title="ListView复用机制">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/12/04/Cordova-plugin/"
+                         data-title="Cordova plugin"
+                         data-url="lehman.top/2016/12/04/Cordova-plugin/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cordova-plugin"><span class="toc-text">Cordova plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工程目录"><span class="toc-text">工程目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写Android代码"><span class="toc-text">编写Android代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先定义一个类继承自CordovaPlugin："><span class="toc-text">首先定义一个类继承自CordovaPlugin：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在该类中添加一个方法execute"><span class="toc-text">在该类中添加一个方法execute:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写plugin-xml文件"><span class="toc-text">编写plugin.xml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写接口文件"><span class="toc-text">编写接口文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Ionic2中如何使用"><span class="toc-text">在Ionic2中如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#首先将该plugin安装到ionic工程中："><span class="toc-text">首先将该plugin安装到ionic工程中：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写一个调用的interface-updater-d-ts"><span class="toc-text">编写一个调用的interface[updater.d.ts]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实现interface-updater-js"><span class="toc-text">实现interface[updater.js]</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Cordova"
+                           title="Cordova">Cordova</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="lehman.top">Lehman&#39;s Blog</a></li>
+                        
+                        <li><a href="http://blog.csdn.net/u010106153">CSDN Blog</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'lehmanhe';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Lehman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lehman&#39;s Blog 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("lehman.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '12858baf50b59495e30b4a61839838ca';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="avatar-hux.jpg">
+</body>
+
+</html>
