@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Lehman的博客 | Lehman&#39;s Blog
+        MyWorks｜Lehman的博客 | Lehman&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="lehman.top/archives/">
+    <link rel="canonical" href="lehman.top/MyWorks/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -131,267 +131,166 @@
 </script>
 
 <!-- Main Content -->
+<style>
+    * {
+        /*border: thin red solid;*/
+    }
 
+    header .bg-header {
+        height: 560px;
+        background-color: #62A4FF;
+    }
 
-<!-- Page Header -->
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    <div class="row">
-        <header class="intro-header">
-            <div class="container">
-                <div class="site-heading text-center">
-                    <div class="about-me">
-                        <!--移动端头部显示-->
-                        <img src="http://ohpbz9f6o.bkt.clouddn.com/profile.jpg"/>
-                        <h5><a href="/about/">Lehman He</a></h5>
-                        <p>个人描述</p>
-                    </div>
+    /*头像*/
+    .bg-header .avatar img {
+        border-radius: 50%;
+        margin-top: 100px;
+        max-width: 170px;
+    }
+
+    .bg-header h1,
+    .bg-header h2 {
+        color: white;
+    }
+
+    /*姓名*/
+    .bg-header h1 {
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(15, 15, 15, .3);
+    }
+
+    /*描述*/
+    .bg-header h2 {
+        font-size: 18px;
+        margin-top: 12px;
+    }
+
+    /*整个作品展示区*/
+    section .works-area {
+        margin-top: -150px;
+    }
+
+    .works-area .works-item {
+        border-radius: 2px;
+        border: 1px solid #eee8d5;
+        margin-bottom: 50px;
+        box-shadow: 8px 5px 10px rgba(0, 0, 0, .2);
+    }
+
+    .works-item-img {
+        margin: auto -26px;
+    }
+
+    .works-item-img img {
+        width: 100%;
+    }
+
+    .works-area .works-item {
+        background: white;
+        padding: 5px 25px;
+    }
+
+    .works-area .footer {
+        padding-top: 10px;
+        border-top: thin #eee solid;
+    }
+
+    .works-area .footer .btn {
+        padding: 7px 9px;
+        border-radius: 2px;
+        float: right;
+        margin: 8px 0;
+        text-transform: none;
+        font-size: 12px;
+        font-style: italic;
+        background: #0085a1;
+        border: none;
+        color: #fff;
+    }
+
+    .works-item .works-content {
+        padding-top: 15px;
+    }
+
+    .works-item .title {
+        padding-top: 6px;
+    }
+
+    .works-item .title h3 {
+        display: inline-block;
+        margin: 0 15px;
+        height: 33px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .works-item .title .title-date {
+        float: right;
+        font-size: 18px;
+    }
+
+    .works-item .use span {
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 3px;
+        padding: 0 4px;
+        border: thin solid #795548;
+    }
+
+    .works-item .subtitle {
+        margin: 0;
+        font-size: 17px;
+    }
+
+    @media screen and (max-width: 400px) {
+        .works-item .footer .use {
+            font-size: 14px;
+        }
+
+        .works-item .works-item-img {
+            height: 200px;
+        }
+
+        .bg-header .avatar img {
+            max-width: 150px;
+        }
+
+        .bg-header h1 {
+            font-size: 24px;
+        }
+
+        section .works-area {
+            margin-top: -210px;
+        }
+    }
+</style>
+
+<div class="works-container" style="background-color: #fafafa">
+    <header>
+        <div class="bg-header text-center">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="http://ohpbz9f6o.bkt.clouddn.com/profile.jpg">
+                </div>
+                <div class="personal-profile">
+                    <h1>
+                        Lehman He
+                    </h1>
+                    <h2>个人作品集</h2>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+    <div class="container">
+        <section class="row">
+            <div class="col-sm-10 col-sm-offset-1
+                        col-md-8 col-md-offset-2
+                      works-area">
+                
+            </div>
+        </section>
     </div>
 </div>
-<!-- Main Content -->
-<div class="container custom-haojen-container">
-    <!-- Post Container -->
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-            <!-- Main Content -->
-
-
-
-<div class="post-preview "
-     style="background-image: url('http://ohpbz9f6o.bkt.clouddn.com/img/profile.jpg')">
-    <a href="/2016/12/11/Fragment_VS_Activity/">
-        <h2 class="post-title">
-            Fragment VS Activity
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-11
-        </p>
-        
-        <h3 class="post-subtitle">
-            Fragment与Activity的对比，及使用注意事项
-        </h3>
-        
-        <div class="post-content-preview">
-            <p>
-                Activity&amp;Fragment(本文整理于知乎回答)相比于Activity来说，创建一个Fragment所需系统资源相比Activity来说更少，然而控制却更为灵活。Fragment一般分为两类，一类是有UI的Fragment，可以作为页面，作为View来展示，另一类是用没有UI的F..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('http://ohpbz9f6o.bkt.clouddn.com/home-image.jpg')">
-    <a href="/2016/12/04/Cordova-plugin/">
-        <h2 class="post-title">
-            Cordova plugin
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-12-04
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                Cordova plugin工程目录
-src: 各个平台的源码文件，包含 Android ios blackberry 等；www: JavaScript调用native代码的接口文件；plugin.xml: 插件的配置文件
-编写Android代码首先定义一个类继承自CordovaPlugin：..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('http://ohpbz9f6o.bkt.clouddn.com/home-image.jpg')">
-    <a href="/2016/05/23/test/">
-        <h2 class="post-title">
-            ListView复用机制
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-05-23
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                convertView什么时候是NULL？今天在stackoverflow上看到大神回答的，翻译过来加深印象。第一次翻译，错了别光打脸。我是传送门刚开始的我也没有搞懂listview中的复用机制，但是经过几天的琢磨看到了下面的图片后终于有了眉目。图片来自android.amberfog
-当你的l..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview "
-     style="background-image: url('http://ohpbz9f6o.bkt.clouddn.com/home-image.jpg')">
-    <a href="/2016/05/23/hello-world/">
-        <h2 class="post-title">
-            Hello World
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2016-05-23
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer i..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-
-<!-- 翻页 pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-        </div>
-        <!-- Sidebar Container -->
-        <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-
-            <!-- About Me -->
-            <section class="visible-md visible-lg" style="padding: 0 18px">
-                <div class="short-about">
-                    <!--侧边栏头像-->
-                    
-                    <img src="http://ohpbz9f6o.bkt.clouddn.com/profile.jpg"/>
-                    
-                    <h5><a href="/about/">Lehman He</a></h5>
-                    
-                    <p>个人描述</p>
-                    
-                    <hr>
-                    <!-- SNS Link 社交 -->
-                    <ul class="list-inline">
-                        
-                        
-                        <li>
-                            <a target="_blank" href="https://twitter.com/LehmanHe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-                        
-                        <li>
-                            <a target="_blank" href="https://www.zhihu.com/people/Lehman">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="http://weibo.com/LehmanHe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/LehmanHe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="https://github.com/LehmanHe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-
-                        
-                        <li>
-                            <a target="_blank" href="https://www.linkedin.com/in/LehmanHe">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                        </span>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Featured Tags  标签 -->
-            
-            <section>
-                <div class="tags">
-                    
-                    
-                    
-                    
-                    <a href="/tags/#Android" title="Android"
-                       rel="2">Android</a>
-                    
-                    
-                </div>
-            </section>
-            
-
-            
-            <hr>
-            <h5 style="text-align: center;">Friends</h5>
-            <ul class="list-inline" style="text-align: center;">
-                
-                <li><a href="lehman.top" target="_blank">Lehman&#39;s Blog</a></li>
-                
-                <li><a href="http://blog.csdn.net/u010106153" target="_blank">CSDN Blog</a></li>
-                
-            </ul>
-            
-
-        </div>
-    </div>
-</div>
-
 <!-- Footer -->
 <!-- Footer -->
 <footer>
