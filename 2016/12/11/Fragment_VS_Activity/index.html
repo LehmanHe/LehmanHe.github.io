@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Lehman" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Fragment VS Activity｜Lehman的博客 | Lehman&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="lehman.top/2016/12/11/Fragment_VS_Activity/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('img/home-bg.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lehman
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://ohpbz9f6o.bkt.clouddn.com/home-image.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://ohpbz9f6o.bkt.clouddn.com/home-image.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Fragment VS Activity</h1>
+                    
+                    <span class="meta">
+                         作者 Lehman He
+                        <span>
+                          日期 2016-12-11
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Fragment VS Activity
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="Activity-amp-Fragment"><a href="#Activity-amp-Fragment" class="headerlink" title="Activity&amp;Fragment"></a>Activity&amp;Fragment</h1><p>相比于Activity来说，创建一个Fragment所需系统资源相比Activity来说更少，然而控制却更为灵活。Fragment一般分为两类，一类是有UI的Fragment，可以作为页面，作为View来展示，另一类是用没有UI的Fragment，一般用作保存数据。</p>
+<h3 id="封装BaseFragment基类"><a href="#封装BaseFragment基类" class="headerlink" title="封装BaseFragment基类"></a>封装BaseFragment基类</h3><p>例如为了实例化View,抽象一个getLayoutId方法，子类无需关心具体的创建操作，父类来做View的创建处理。同时可以提供一个afterCreate抽象函数，在初始化完成之后调用,子类可以做一些初始化的操作，你也可以添加一些常用的方法在基类，例如ShowToast().</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> View mRootView;</div><div class="line"></div><div class="line"><span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == mRootView)&#123;</div><div class="line">           mRootView = inflater.inflate(getLayoutId(), container, <span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> mRootView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</div><div class="line">        afterCreate(savedInstanceState);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getLayoutId</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">afterCreate</span><span class="params">(Bundle savedInstanceState)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>public View onCreateView 这个方法中返回之前判断一下你的mRootView是null再inflate，这样会比较好，在ViewPager中随着页面滑动这个方法会调用多次，inflate过了之后就直接用就好了。</p>
+<h3 id="使用静态工厂方法newInstance-…-来获取Fragment实例"><a href="#使用静态工厂方法newInstance-…-来获取Fragment实例" class="headerlink" title="使用静态工厂方法newInstance(…)来获取Fragment实例"></a>使用静态工厂方法newInstance(…)来获取Fragment实例</h3><p>可以在Google的代码中发现这种写法，好处是接收确切的参数，返回一个Fragment实例，避免了在创建Fragment的时候无法在类外部知道所需参数的问题，在合作开发的时候特别有用。<br>还有就是Fragment推荐使用setArguments来传递参数，避免在横竖屏切换的时候Fragment自动调用自己的无参构造函数，导致数据丢失。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> WeatherFragment <span class="title">newInstance</span><span class="params">(String cityName)</span> </span>&#123;</div><div class="line">    Bundle args = <span class="keyword">new</span> Bundle();</div><div class="line">    args.putString(cityName,<span class="string">"cityName"</span>);</div><div class="line">    WeatherFragment fragment = <span class="keyword">new</span> WeatherFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    <span class="keyword">return</span> fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Fragment状态保存-现场恢复"><a href="#Fragment状态保存-现场恢复" class="headerlink" title="Fragment状态保存/现场恢复"></a>Fragment状态保存/现场恢复</h3><p>不要在Fragment里面保存ViewState！<br>为了让你的代码更加清晰和稳定，最好区分清楚fragment状态保存和view状态保存，<br>如果某个属性属于View，则不要在Fragment中做它的状态保存，除非属性属于Fragment。</p>
+<p>每一个自定义View都有义务实现状态的保存，可以像EditText一样，设置一个开关来选择是否保存<br>比如说：android:freezeText=”true/false”。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Parcelable <span class="title">onSaveInstanceState</span><span class="params">()</span> </span>&#123;</div><div class="line">        Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">        <span class="comment">// 在这里保存当前状态</span></div><div class="line">        <span class="keyword">return</span> bundle;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Parcelable state)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onRestoreInstanceState(state);</div><div class="line">        <span class="comment">// 恢复保存的状态</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>处理fragment状态保存，例如保存从服务器获取的数据。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> String serverData;</div><div class="line">     </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState);</div><div class="line">        outState.putString(<span class="string">"data"</span>, serverData);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</div><div class="line">        serverData = savedInstanceState.getString(<span class="string">"data"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="避免错误操作导致Fragment的视图重叠"><a href="#避免错误操作导致Fragment的视图重叠" class="headerlink" title="避免错误操作导致Fragment的视图重叠"></a>避免错误操作导致Fragment的视图重叠</h3><p>视图重叠是因为fragment已经发生了内存泄漏。<br>activity的创建、销毁完全托管到systemserver（ams），而fragment一般是手动new一个对象再add到systemserver，所以这里就有问题了。<br>fragment生命周期开始于add，结束于remove。不管app中间怎么变化，崩溃、进程被回收，只要没有remove，android框架都会自动创建、恢复fragment的状态。<br>这个问题很简单，在add或者replace的时候，调用含有TAG参数的那个方法，之后再add相同TAG的Fragment的话，之前的会被替换掉，也就不会同时出现多个相同的Fragment了。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="comment">//TAG</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = WeatherFragment.class.getSimpleName();</div></pre></td></tr></table></figure></p>
+<p>不过为了最大限度的重用，可以在Activity的onCreate(Bundle savedInstanceState)中判断savedInstanceState是否不为空；</p>
+<p>不为空的话，先用getSupportFragmentManager(). findFragmentByTag()找一下，找到实例就不用再次创建。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">WeatherFragment fragment = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(savedInstanceState!=<span class="keyword">null</span>)&#123;</div><div class="line">fragment = getSupportFragmentManager().findFragmentByTag(WeatherFragment.TAG);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(fragment == <span class="keyword">null</span>)&#123;</div><div class="line">   fragment = WeatherFragment.newInstance(...);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Fragment里监听虚拟按键和实体按键的返回事件"><a href="#Fragment里监听虚拟按键和实体按键的返回事件" class="headerlink" title="Fragment里监听虚拟按键和实体按键的返回事件"></a>Fragment里监听虚拟按键和实体按键的返回事件</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">mRootView.setFocusable(<span class="keyword">true</span>);</div><div class="line">mRootView.setFocusableInTouchMode(<span class="keyword">true</span>);</div><div class="line">mRootView.setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View v, <span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</div><div class="line">            <span class="comment">//不一定是要触发返回栈，可以做一些其他的事情，我只是举个栗子。</span></div><div class="line">            getActivity().onBackPressed();</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ul>
+<li>FragmentTransaction异步执行相关问题。FragmentTransaction#commit函数是异步执行的（其把本次transaction的所有操作添加到消息队列里），不注意这一点可能会出现一些奇怪的问题。比如闪屏问题：view的显示隐藏是同步执行的，而fragment的hide、show是异步执行的，所以可能会碰到view隐藏了，而fragment的界面还没显示，导致闪屏。不过android也提供了FragmentManager#executePendingTransactions方法，强制同步执行。</li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/12/04/Cordova-plugin/" data-toggle="tooltip" data-placement="top"
+                           title="Cordova plugin">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                         data-thread-key="2016/12/11/Fragment_VS_Activity/"
+                         data-title="Fragment VS Activity"
+                         data-url="lehman.top/2016/12/11/Fragment_VS_Activity/">
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity-amp-Fragment"><span class="toc-text">Activity&Fragment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#封装BaseFragment基类"><span class="toc-text">封装BaseFragment基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用静态工厂方法newInstance-…-来获取Fragment实例"><span class="toc-text">使用静态工厂方法newInstance(…)来获取Fragment实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fragment状态保存-现场恢复"><span class="toc-text">Fragment状态保存/现场恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#避免错误操作导致Fragment的视图重叠"><span class="toc-text">避免错误操作导致Fragment的视图重叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fragment里监听虚拟按键和实体按键的返回事件"><span class="toc-text">Fragment里监听虚拟按键和实体按键的返回事件</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Android"
+                           title="Android">Android</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="lehman.top">Lehman&#39;s Blog</a></li>
+                        
+                        <li><a href="http://blog.csdn.net/u010106153">CSDN Blog</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'lehmanhe';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/Lehman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/LehmanHe">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lehman 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("lehman.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '12858baf50b59495e30b4a61839838ca';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://ohpbz9f6o.bkt.clouddn.com/profile.jpg">
+</body>
+
+</html>
